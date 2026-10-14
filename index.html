@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code Doctor: fix broken AI-built apps</title>
+<meta name="description" content="Fixed-price fixes for apps built with Lovable, Bolt, Replit, Cursor and v0. Run, test, secret-scan, fix, prove.">
+<style>
+body{margin:0;font:17px/1.55 system-ui,sans-serif;background:#0e1117;color:#eee}
+main{max-width:920px;margin:auto;padding:32px 20px}
+h1{font-size:2.2em;margin:.2em 0}h2{margin-top:2em;color:#40c478}
+.k{color:#40c478;font-weight:700;letter-spacing:.08em}
+table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid #2a2f3a;padding:8px;text-align:left}th{background:#1a1e26}
+.btn{display:inline-block;background:#40c478;color:#0e1117;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;margin:6px 8px 6px 0}
+.note{color:#9aa}.c{color:#e63c3c}.h{color:#f08c28}.m{color:#e6c83c}
+</style></head><body><main>
+<div class="k">CODE DOCTOR</div>
+<h1>Your AI tool built the app. I make it actually work.</h1>
+<p>Apps from Lovable, Bolt, Replit, Cursor, v0 or ChatGPT that half-work, won't build, or leak API keys. I run your repo, scan it, give you a fixed price, fix it, and show before/after proof.</p>
+<a class="btn" href="FIVERR_GIG_URL">Order on Fiverr</a>
+
+<h2>How it works</h2>
+<ol><li>Invite me to your repo (no passwords, ever).</li>
+<li>I build it, run the tests and scan it: leaked secrets, open API routes, vulnerable packages, unsafe AI tool calls, Firebase/Supabase rules, CORS, rate limits.</li>
+<li>You get a prioritized report and a fixed price.</li>
+<li>I fix it, re-scan, and show you what's fixed, what's new and what's still open.</li></ol>
+
+<h2>Prices</h2>
+<table><tr><th>Level</th><th>What you get</th><th>Express</th><th>Premium</th></tr>
+<tr><td>Quick Fix</td><td>Run, test, secret scan. Report + fixed quote.</td><td>$75 · 2 days</td><td>$150 · 1 day</td></tr>
+<tr><td>Security + Bug Pass</td><td>Quick Fix + fix the top blockers (up to ~5 issues or 3 bugs), build passing, leaked keys removed.</td><td>$250 · 4 days</td><td>$500 · 2 days</td></tr>
+<tr><td>Full Rescue</td><td>Everything above + deploy, passing CI, critical-path tests, handover README.</td><td>$600 · 7 days</td><td>$1,200 · 4 days</td></tr></table>
+<p class="note">Express: standard queue, 1 revision. Premium: priority queue, written security report with before/after proof, walkthrough note, 3 revisions, 14 days of follow-up fixes. Quick Fix fee is credited if you upgrade within 14 days.</p>
+
+<h2>Sample report from a real scan</h2>
+<p class="note">Neon App Builder case study, scanned Oct 7, 2026. One security fix pass, then re-scanned.</p>
+<table><tr><th></th><th class="c">Critical</th><th class="h">High</th><th class="m">Medium</th><th>Low</th><th>Info</th><th>Total</th></tr>
+<tr><td>Before</td><td>2</td><td>39</td><td>31</td><td>42</td><td>113</td><td>227</td></tr>
+<tr><td>Fixed</td><td>0</td><td>10</td><td>2</td><td>0</td><td>0</td><td>12</td></tr>
+<tr><td>After</td><td>2</td><td>30</td><td>31</td><td>42</td><td>114</td><td>219</td></tr></table>
+<p>Fixed in that pass:</p>
+<ul><li>8 API routes in <code>server/api.ts</code> with no authentication</li>
+<li>AI tool-call arguments used for file/shell access without checks (9 places)</li>
+<li>Shell command built from a variable (2 places)</li></ul>
+<p class="note">The report is honest about what's left: 2 critical dependency upgrades were still open after this pass and are listed first in "Fix these first".</p>
+
+<h2>Get started</h2>
+<a class="btn" href="FIVERR_GIG_URL">Code Doctor Express on Fiverr</a>
+<a class="btn" href="FIVERR_PREMIUM_URL">Code Doctor Premium on Fiverr</a>
+<p class="note">Questions? Message me on Fiverr before you order.</p>
+</main></body></html>

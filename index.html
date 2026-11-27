@@ -8,13 +8,19 @@ main{max-width:920px;margin:auto;padding:32px 20px}
 h1{font-size:2.2em;margin:.2em 0}h2{margin-top:2em;color:#40c478}
 .k{color:#40c478;font-weight:700;letter-spacing:.08em}
 table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid #2a2f3a;padding:8px;text-align:left}th{background:#1a1e26}
-.btn{display:inline-block;background:#40c478;color:#0e1117;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;margin:6px 8px 6px 0}
+.btn{display:inline-block;background:#40c478;color:#0e1117;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;margin:6px 8px 6px 0;border:0;font:inherit;font-weight:700;cursor:pointer}
 .note{color:#9aa}.c{color:#e63c3c}.h{color:#f08c28}.m{color:#e6c83c}
+form.lead{background:#1a1e26;border:1px solid #2a2f3a;border-radius:10px;padding:18px 18px 8px;margin:16px 0}
+form.lead label{display:block;margin:0 0 12px;font-weight:600}
+form.lead input,form.lead textarea,form.lead select{display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:10px;border:1px solid #2a2f3a;border-radius:6px;background:#0e1117;color:#eee;font:inherit}
+form.lead textarea{min-height:110px;resize:vertical}
+a.fiverr-btn[hidden]{display:none!important}
 </style></head><body><main>
 <div class="k">CODE DOCTOR</div>
 <h1>Your AI tool built the app. I make it actually work.</h1>
 <p>Apps from Lovable, Bolt, Replit, Cursor, v0 or ChatGPT that half-work, won't build, or leak API keys. I run your repo, scan it, give you a fixed price, fix it, and show before/after proof.</p>
-<a class="btn" href="FIVERR_GIG_URL">Order on Fiverr</a>
+<a class="btn" href="#book">Book a fix by email</a>
+<a class="btn fiverr-btn" href="FIVERR_GIG_URL" hidden>Order on Fiverr</a>
 
 <h2>How it works</h2>
 <ol><li>Invite me to your repo (no passwords, ever).</li>
@@ -41,8 +47,66 @@ table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid #
 <li>Shell command built from a variable (2 places)</li></ul>
 <p class="note">The report is honest about what's left: 2 critical dependency upgrades were still open after this pass and are listed first in "Fix these first".</p>
 
-<h2>Get started</h2>
-<a class="btn" href="FIVERR_GIG_URL">Code Doctor Express on Fiverr</a>
-<a class="btn" href="FIVERR_PREMIUM_URL">Code Doctor Premium on Fiverr</a>
-<p class="note">Questions? Message me on Fiverr before you order.</p>
+<h2 id="book">Book a fix</h2>
+<p>Fiverr is not live yet, so this page takes leads by email. Tell me what's broken and which tier you want. I'll reply with a fixed price and a payment link. No passwords, ever — a GitHub invite or a repo URL is enough.</p>
+<form class="lead" id="lead-form" action="mailto:fmmg.mars@gmail.com" method="post" enctype="text/plain">
+  <label>Name <input name="name" type="text" autocomplete="name" required></label>
+  <label>Your email <input name="email" type="email" autocomplete="email" required></label>
+  <label>Repo URL (optional) <input name="repo" type="url" placeholder="https://github.com/you/your-app"></label>
+  <label>Tier
+    <select name="tier">
+      <option value="Not sure — quote me">Not sure — quote me</option>
+      <option value="Quick Fix Express $75">Quick Fix · Express $75</option>
+      <option value="Quick Fix Premium $150">Quick Fix · Premium $150</option>
+      <option value="Security + Bug Pass Express $250">Security + Bug Pass · Express $250</option>
+      <option value="Security + Bug Pass Premium $500">Security + Bug Pass · Premium $500</option>
+      <option value="Full Rescue Express $600">Full Rescue · Express $600</option>
+      <option value="Full Rescue Premium $1200">Full Rescue · Premium $1,200</option>
+    </select>
+  </label>
+  <label>What's broken <textarea name="details" required placeholder="Which AI tool built it, what fails, and what done looks like."></textarea></label>
+  <button class="btn" type="submit">Email Code Doctor</button>
+</form>
+<p class="note">Or email <a href="mailto:fmmg.mars@gmail.com?subject=Code%20Doctor%20quote">fmmg.mars@gmail.com</a> directly. That is the owner address already documented in this project's handoff. A public Cash App, Ko-fi, or Stripe payment link is not documented in the repos, so none is wired here. Stripe Checkout can be added later when a real key or payment link exists — nothing was invented for this page.</p>
+<a class="btn fiverr-btn" href="FIVERR_GIG_URL" hidden>Code Doctor Express on Fiverr</a>
+<a class="btn fiverr-btn" href="FIVERR_PREMIUM_URL" hidden>Code Doctor Premium on Fiverr</a>
+<noscript><p class="note">JavaScript is off. Use the form above, or email fmmg.mars@gmail.com with your name, repo, and what's broken.</p></noscript>
+<script>
+(function(){
+  function isLiveUrl(href){
+    return /^https:\/\//i.test(href || "") && href.indexOf("FIVERR_") === -1;
+  }
+  document.querySelectorAll("a.fiverr-btn").forEach(function(a){
+    if (isLiveUrl(a.getAttribute("href"))) {
+      a.removeAttribute("hidden");
+    } else {
+      a.setAttribute("hidden", "");
+      a.setAttribute("aria-hidden", "true");
+    }
+  });
+  var form = document.getElementById("lead-form");
+  if (!form) return;
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var name = (form.name.value || "").trim();
+    var email = (form.email.value || "").trim();
+    var repo = (form.repo.value || "").trim();
+    var tier = (form.tier.value || "").trim();
+    var details = (form.details.value || "").trim();
+    var body = [
+      "Name: " + name,
+      "Email: " + email,
+      "Repo: " + (repo || "(none)"),
+      "Tier: " + tier,
+      "",
+      "What's broken:",
+      details
+    ].join("\n");
+    var url = "mailto:fmmg.mars@gmail.com"
+      + "?subject=" + encodeURIComponent("Code Doctor quote — " + (tier || "new lead"))
+      + "&body=" + encodeURIComponent(body);
+    window.location.href = url;
+  });
+})();
+</script>
 </main></body></html>
